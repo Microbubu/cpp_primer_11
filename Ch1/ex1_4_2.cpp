@@ -16,7 +16,7 @@ int main(){
     cout << "Input two numbers:" << endl;
     int min, max;
     cin >> min >> max;
-    for (int number = min - 1; number < max; ++number)
+    for (int number = min + 1; number < max; ++number)
         cout << number << " ";
     cout << endl;
 

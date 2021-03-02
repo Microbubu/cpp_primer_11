@@ -19,8 +19,8 @@ int main(){
     cout << "Input two numbers:" << endl;
     int min, max;
     cin >> min >> max;
-    while (min < max)
-        cout << ++min << " ";
+    while (++min < max)
+        cout << min << " ";
     cout << endl;
 
     return 0;
