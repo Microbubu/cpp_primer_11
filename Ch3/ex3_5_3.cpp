@@ -1,10 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <iterator>
 
 using namespace std;
-
-template<typename T>
-bool array_equals(T* array1, T* array2);
 
 template<typename T>
 bool vector_equals(vector<T> v1, vector<T> v2);
@@ -26,10 +24,19 @@ int main(){
     cout << endl;
 
     //ex3.36
-    int iarray1[] = { 1,2,3,4 };
-    int iarray2[] = { 1,2,3,5 };
-    if (array_equals(iarray1, iarray2))
-        cout << "Array equals" << endl;
+    const unsigned cnt = 4;
+    int iarray1[cnt] = { 1, 2, 3, 4 };
+    int iarray2[cnt] = { 1, 2, 3, 5 };
+    
+    bool equals = true;
+    int* pointer1 = iarray1, * pointer2 = iarray2, * endPointer = pointer1 + cnt;
+    while (pointer1 != endPointer) {
+        if (*pointer1++ != *pointer2++) {
+            equals = false;
+            break;
+        }
+    }
+    if (equals) cout << "Array equals" << endl;
     else cout << "Array not equals" << endl;
 
     vector<int> ivector1(10);
@@ -46,16 +53,5 @@ bool vector_equals(vector<T> v1, vector<T> v2) {
     if (v1.size() != v2.size()) return false;
     for (decltype(v1.size()) index = 0; index != v1.size(); ++index)
         if (v1.at(index) != v2.at(index)) return false;
-    return true;
-}
-
-template<typename T>
-bool array_equals(T* array1, T* array2) {
-    if (sizeof(array1) != sizeof(array2)) return false;
-    while (array1 && array2) {
-        if (*array1 != *array2) return false;
-        array1++;
-        array2++;
-    }
     return true;
 }
