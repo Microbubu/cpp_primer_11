@@ -16,3 +16,10 @@ void swap_by_ref(int&, int&);
 //6.2.3
 bool contains_upper(const std::string&);
 void to_lower(std::string&);
+
+//6.2.4
+int bigger_number(const int& ival, const int* ip);
+void swap_pointer(int*&, int*&);
+
+//6.2.6
+int sum(std::initializer_list<int> ilist);
